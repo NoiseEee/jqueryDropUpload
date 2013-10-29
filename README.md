@@ -22,3 +22,8 @@ urlTarget: string
 progressBar: string
   - the ID of the progress bar to use, if one is to be used at all. This accepts a string, *not* a jquery object
 
+onComplete: function
+  - callback for successful XHR call  (for xhr.done)
+
+onError: function
+  - callback for errors in XHR call  (for xhr.fail)
