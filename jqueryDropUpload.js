@@ -126,11 +126,16 @@
                     data: formData
                 });
 
-                doIt.done(function(data) {
-                    actualBar.prop('width','100%');
-                    console.log(data);
-                    alert('whee');
+                doIt.done(function() {
+                    actualBar.css('width','100%');
+                    options.onComplete.call(this,doIt);
                 });
+
+                doIt.fail(function() {
+                    actualBar.css('width','0%');
+                    options.onError.call(this,doIt);
+                });
+
             }
 
 
@@ -150,7 +155,9 @@
         allowedExtensions: [],
         allowMultiples: true,
         urlTarget: '',
-        progressBar: null
+        progressBar: null,
+        onComplete: function () {},
+        onError: function () { console.error('sorry, was XHR error');}
     };
 
 
